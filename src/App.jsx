@@ -1,26 +1,24 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Products from './pages/Products';
+import Pricing from './pages/Pricing';
+import HomePage from './pages/HomePage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div></div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <h1>
+      Helloo router
+      <BrowserRouter>
+        <Routes>
+          <Route path='product' element={<Products />} />
+          <Route path='pricing' element={<Pricing />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </h1>
   );
 }
 
-export default App
+export default App;
